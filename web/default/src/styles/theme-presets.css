@@ -292,6 +292,8 @@ For commercial licensing, please contact support@quantumnous.com
 }
 
 /* ── CK Tech ──────────────────────────────────────────────────────────── */
+/* Also apply when no preset attribute is set (ck-tech is the default) */
+body:not([data-theme-preset]),
 [data-theme-preset='ck-tech'] {
   --primary: oklch(0.52 0.22 245);
   --primary-foreground: oklch(1 0 0);
@@ -310,6 +312,7 @@ For commercial licensing, please contact support@quantumnous.com
   --sidebar-ring: oklch(0.52 0.22 245);
   --radius: 0.5rem;
 }
+.dark body:not([data-theme-preset]),
 .dark [data-theme-preset='ck-tech'] {
   --primary: oklch(0.68 0.18 245);
   --primary-foreground: oklch(0.16 0.035 250);
