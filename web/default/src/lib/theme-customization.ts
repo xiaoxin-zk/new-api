@@ -64,6 +64,11 @@ export const THEME_PRESETS = [
     name: 'Lavender Dream',
     swatches: ['oklch(0.5709 0.1808 306.89)', 'oklch(0.811 0.0589 201.14)'],
   },
+  {
+    value: 'ck-tech',
+    name: 'CK 科技蓝',
+    swatches: ['oklch(0.52 0.22 245)', 'oklch(0.62 0.18 285)'],
+  },
 ] as const
 
 export type ThemePreset = (typeof THEME_PRESETS)[number]['value']
@@ -79,7 +84,7 @@ export type ThemeCustomization = {
 }
 
 export const DEFAULT_THEME_CUSTOMIZATION: ThemeCustomization = {
-  preset: 'default',
+  preset: 'ck-tech',
   radius: 'default',
   scale: 'default',
   contentLayout: 'full',

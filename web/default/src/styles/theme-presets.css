@@ -291,6 +291,44 @@ For commercial licensing, please contact support@quantumnous.com
   --sidebar-ring: oklch(0.6359 0.1699 307.95);
 }
 
+/* ── CK Tech ──────────────────────────────────────────────────────────── */
+[data-theme-preset='ck-tech'] {
+  --primary: oklch(0.52 0.22 245);
+  --primary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.62 0.18 285);
+  --secondary-foreground: oklch(1 0 0);
+  --ring: oklch(0.52 0.22 245);
+  --chart-1: oklch(0.52 0.22 245);
+  --chart-2: oklch(0.62 0.18 285);
+  --chart-3: oklch(0.68 0.16 220);
+  --chart-4: oklch(0.72 0.14 265);
+  --chart-5: oklch(0.78 0.12 200);
+  --sidebar-primary: oklch(0.52 0.22 245);
+  --sidebar-primary-foreground: oklch(1 0 0);
+  --sidebar-accent: oklch(0.62 0.18 285);
+  --sidebar-accent-foreground: oklch(1 0 0);
+  --sidebar-ring: oklch(0.52 0.22 245);
+  --radius: 0.5rem;
+}
+.dark [data-theme-preset='ck-tech'] {
+  --primary: oklch(0.68 0.18 245);
+  --primary-foreground: oklch(0.16 0.035 250);
+  --secondary: oklch(0.72 0.16 285);
+  --secondary-foreground: oklch(0.17 0.04 285);
+  --ring: oklch(0.68 0.18 245);
+  --chart-1: oklch(0.68 0.18 245);
+  --chart-2: oklch(0.72 0.16 285);
+  --chart-3: oklch(0.76 0.14 220);
+  --chart-4: oklch(0.64 0.17 265);
+  --chart-5: oklch(0.8 0.12 200);
+  --sidebar-primary: oklch(0.68 0.18 245);
+  --sidebar-primary-foreground: oklch(0.16 0.035 250);
+  --sidebar-accent: oklch(0.72 0.16 285);
+  --sidebar-accent-foreground: oklch(0.17 0.04 285);
+  --sidebar-ring: oklch(0.68 0.18 245);
+  --radius: 0.5rem;
+}
+
 /* ── Semantic surface bridge ──────────────────────────────────────────── */
 /* Color presets should tint the surfaces most components actually use, not
  * only primary buttons. These derived tokens keep the app theme-aware without

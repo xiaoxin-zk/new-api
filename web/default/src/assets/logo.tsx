@@ -22,7 +22,7 @@ import { cn } from '@/lib/utils'
 export function Logo({ className, ...props }: SVGProps<SVGSVGElement>) {
   return (
     <svg
-      id='newapi-logo'
+      id='ck-logo'
       viewBox='0 0 24 24'
       xmlns='http://www.w3.org/2000/svg'
       height='24'
@@ -35,8 +35,15 @@ export function Logo({ className, ...props }: SVGProps<SVGSVGElement>) {
       className={cn('size-6', className)}
       {...props}
     >
-      <title>New API</title>
-      <path d='M15 6v12a3 3 0 1 0 3-3H6a3 3 0 1 0 3 3V6a3 3 0 1 0-3 3h12a3 3 0 1 0-3-3' />
+      <title>CK聚合AI平台</title>
+      <circle cx='12' cy='12' r='7.5' />
+      <path d='M7.2 12a4.8 4.8 0 0 1 6.6-4.4' />
+      <path d='M14.8 8v8' />
+      <path d='M14.8 12 18 8.8' />
+      <path d='M14.8 12 18 15.2' />
+      <circle cx='5' cy='12' r='1.2' fill='currentColor' stroke='none' />
+      <circle cx='19' cy='8.8' r='1.2' fill='currentColor' stroke='none' />
+      <circle cx='19' cy='15.2' r='1.2' fill='currentColor' stroke='none' />
     </svg>
   )
 }
