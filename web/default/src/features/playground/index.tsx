@@ -16,9 +16,82 @@ along with this program. If not, see <https://www.gnu.org/licenses/>.
 
 For commercial licensing, please contact support@quantumnous.com
 */
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { useQuery } from '@tanstack/react-query'
 import { getUserModels, getUserGroups } from './api'
+
+// ── Starfield canvas ──────────────────────────────────────────────────────────
+interface Star {
+  x: number; y: number; radius: number
+  baseOpacity: number; phase: number; twinkleSpeed: number
+  driftX: number; driftY: number
+}
+
+function PlaygroundStarfield() {
+  const canvasRef = useRef<HTMLCanvasElement>(null)
+
+  useEffect(() => {
+    const canvas = canvasRef.current
+    if (!canvas) return
+    const ctx = canvas.getContext('2d')
+    if (!ctx) return
+
+    let rafId = 0
+    let w = 0, h = 0
+    let stars: Star[] = []
+    let lastT = performance.now()
+
+    const resize = () => {
+      const r = canvas.getBoundingClientRect()
+      const dpr = Math.min(window.devicePixelRatio || 1, 2)
+      w = Math.max(1, r.width); h = Math.max(1, r.height)
+      canvas.width = Math.floor(w * dpr); canvas.height = Math.floor(h * dpr)
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0)
+      stars = Array.from({ length: 140 }, () => ({
+        x: Math.random() * w, y: Math.random() * h,
+        radius: 0.4 + Math.random() * 1.4,
+        baseOpacity: 0.25 + Math.random() * 0.55,
+        phase: Math.random() * Math.PI * 2,
+        twinkleSpeed: 0.001 + Math.random() * 0.002,
+        driftX: (Math.random() - 0.5) * 0.014,
+        driftY: (Math.random() - 0.5) * 0.01,
+      }))
+    }
+
+    const draw = (t: number) => {
+      const delta = Math.min(48, t - lastT); lastT = t
+      const dark = document.documentElement.classList.contains('dark')
+      ctx.clearRect(0, 0, w, h)
+      for (const s of stars) {
+        s.x += s.driftX * delta; s.y += s.driftY * delta
+        if (s.x < -2) s.x = w + 2; if (s.x > w + 2) s.x = -2
+        if (s.y < -2) s.y = h + 2; if (s.y > h + 2) s.y = -2
+        const op = Math.max(0.05, s.baseOpacity * (0.55 + Math.sin(t * s.twinkleSpeed + s.phase) * 0.45))
+        ctx.beginPath()
+        ctx.arc(s.x, s.y, s.radius, 0, Math.PI * 2)
+        ctx.shadowBlur = s.radius > 1.1 ? 7 : 2
+        if (dark) {
+          ctx.shadowColor = `rgba(96,165,250,${op * 0.7})`
+          ctx.fillStyle = `rgba(210,230,255,${op})`
+        } else {
+          ctx.shadowColor = `rgba(59,130,246,${op * 0.3})`
+          ctx.fillStyle = `rgba(60,100,180,${op * 0.28})`
+        }
+        ctx.fill()
+      }
+      ctx.shadowBlur = 0
+      rafId = requestAnimationFrame(draw)
+    }
+
+    const ro = new ResizeObserver(resize)
+    ro.observe(canvas)
+    resize()
+    rafId = requestAnimationFrame(draw)
+    return () => { ro.disconnect(); cancelAnimationFrame(rafId) }
+  }, [])
+
+  return <canvas ref={canvasRef} aria-hidden='true' className='pointer-events-none absolute inset-0 z-0 h-full w-full' />
+}
 import { PlaygroundChat } from './components/playground-chat'
 import { PlaygroundInput } from './components/playground-input'
 import { usePlaygroundState, useChatHandler } from './hooks'
@@ -164,9 +237,10 @@ export function Playground() {
   }
 
   return (
-    <div className='relative flex size-full flex-col overflow-hidden'>
+    <div className='relative flex size-full flex-col overflow-hidden bg-background'>
+      <PlaygroundStarfield />
       {/* Full-width scroll container: scrolling works even over side whitespace */}
-      <div className='flex flex-1 flex-col overflow-hidden'>
+      <div className='relative z-10 flex flex-1 flex-col overflow-hidden'>
         <PlaygroundChat
           messages={messages}
           onCopyMessage={handleCopyMessage}
@@ -182,7 +256,7 @@ export function Playground() {
       </div>
 
       {/* Input area: center content and constrain to the same container width */}
-      <div className='mx-auto w-full max-w-4xl'>
+      <div className='relative z-10 mx-auto w-full max-w-4xl'>
         <PlaygroundInput
           disabled={isGenerating}
           groups={groups}
