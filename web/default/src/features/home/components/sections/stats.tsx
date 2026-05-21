@@ -105,19 +105,21 @@ export function Stats(_props: StatsProps) {
   ]
 
   return (
-    <div className='relative z-10 border-y border-white/8'>
+    <div className='relative z-10 border-y border-slate-200/80 bg-white dark:border-white/8 dark:bg-[oklch(0.06_0.02_250)]'>
       <div className='mx-auto max-w-6xl px-6 py-10 md:py-12'>
-        <div className='overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] shadow-[0_0_48px_rgba(59,130,246,0.08)] backdrop-blur-sm'>
-          <div className='grid grid-cols-2 gap-px bg-white/8 md:grid-cols-4'>
+        <div className='overflow-hidden rounded-2xl border border-blue-100 bg-white shadow-[0_2px_24px_rgba(59,130,246,0.08)] dark:border-white/10 dark:bg-white/[0.03] dark:shadow-[0_0_48px_rgba(59,130,246,0.08)]'>
+          <div className='grid grid-cols-2 gap-px bg-slate-200 md:grid-cols-4 dark:bg-white/8'>
             {stats.map((s) => (
               <div
                 key={s.label}
-                className='flex flex-col items-center bg-[oklch(0.06_0.02_250)] px-6 py-8 text-center md:py-10'
+                className='flex flex-col items-center bg-white px-6 py-8 text-center md:py-10 dark:bg-[oklch(0.06_0.02_250)]'
               >
-                <span className='text-2xl font-bold tracking-tight text-cyan-300 md:text-3xl'>
+                <span className='text-2xl font-bold tracking-tight text-blue-600 md:text-3xl dark:text-cyan-300'>
                   <Counter end={s.end} suffix={s.suffix} decimals={s.decimals} />
                 </span>
-                <span className='mt-1.5 text-xs text-slate-400'>{s.label}</span>
+                <span className='mt-1.5 text-xs text-slate-500 dark:text-slate-400'>
+                  {s.label}
+                </span>
               </div>
             ))}
           </div>

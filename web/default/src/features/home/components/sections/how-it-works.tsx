@@ -49,13 +49,13 @@ export function HowItWorks() {
   ]
 
   return (
-    <section className='relative z-10 border-t border-white/8 px-6 py-24 md:py-32'>
+    <section className='relative z-10 border-t border-slate-200 bg-white px-6 py-24 md:py-32 dark:border-white/8 dark:bg-[oklch(0.06_0.02_250)]'>
       <div className='mx-auto max-w-6xl'>
         <AnimateInView className='mb-16 text-center md:mb-20'>
-          <p className='mb-3 text-xs font-medium tracking-widest text-cyan-400/70 uppercase'>
+          <p className='mb-3 text-xs font-medium tracking-widest text-blue-500/80 uppercase dark:text-cyan-400/70'>
             {t('How It Works')}
           </p>
-          <h2 className='text-2xl font-bold tracking-tight text-white md:text-3xl'>
+          <h2 className='text-2xl font-bold tracking-tight text-slate-900 md:text-3xl dark:text-white'>
             {t('Three steps to get started')}
           </h2>
         </AnimateInView>
@@ -69,17 +69,17 @@ export function HowItWorks() {
               className='relative flex flex-col items-center text-center'
             >
               <div className='relative mb-6'>
-                <div className='flex size-16 items-center justify-center rounded-2xl border border-white/15 bg-white/[0.05] text-cyan-300 transition-colors'>
+                <div className='flex size-16 items-center justify-center rounded-2xl border border-blue-200 bg-blue-50/80 text-blue-600 transition-colors dark:border-white/15 dark:bg-white/[0.05] dark:text-cyan-300'>
                   {step.icon}
                 </div>
-                <div className='absolute -top-2 -right-2 flex size-6 items-center justify-center rounded-full bg-gradient-to-br from-blue-500 to-violet-600 text-xs font-bold text-white shadow-[0_0_16px_rgba(59,130,246,0.5)]'>
+                <div className='absolute -top-2 -right-2 flex size-6 items-center justify-center rounded-full bg-gradient-to-br from-blue-500 to-violet-600 text-xs font-bold text-white shadow-md shadow-blue-500/30 dark:shadow-[0_0_16px_rgba(59,130,246,0.5)]'>
                   {step.num}
                 </div>
               </div>
-              <h3 className='mb-2 text-base font-semibold text-white'>
+              <h3 className='mb-2 text-base font-semibold text-slate-800 dark:text-white'>
                 {step.title}
               </h3>
-              <p className='max-w-[240px] text-sm leading-relaxed text-slate-400'>
+              <p className='max-w-[240px] text-sm leading-relaxed text-slate-500 dark:text-slate-400'>
                 {step.desc}
               </p>
             </AnimateInView>
