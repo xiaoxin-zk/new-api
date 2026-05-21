@@ -181,6 +181,11 @@ export function PublicHeader(props: PublicHeaderProps) {
 
   return (
     <>
+      {/* Top gradient mask — improves nav text contrast over dark hero bg */}
+      <div
+        aria-hidden='true'
+        className='pointer-events-none fixed inset-x-0 top-0 z-40 h-24 bg-gradient-to-b from-black/18 to-transparent dark:from-black/35'
+      />
       <header className='pointer-events-none fixed inset-x-0 top-0 z-50'>
         <div
           className={cn(
@@ -235,7 +240,7 @@ export function PublicHeader(props: PublicHeaderProps) {
                       tabIndex={link.disabled ? -1 : undefined}
                       onClick={(event) => handleNavLinkClick(event, link)}
                       className={cn(
-                        'text-muted-foreground hover:text-foreground rounded-lg px-3 py-1.5 text-[13px] font-medium transition-colors duration-200',
+                        'text-foreground/65 hover:text-foreground rounded-lg px-3 py-1.5 text-[13px] font-medium transition-colors duration-200',
                         link.disabled && 'pointer-events-none opacity-50'
                       )}
                     >
@@ -253,7 +258,7 @@ export function PublicHeader(props: PublicHeaderProps) {
                       'rounded-lg px-3 py-1.5 text-[13px] font-medium transition-colors duration-200',
                       isActive
                         ? 'text-foreground'
-                        : 'text-muted-foreground hover:text-foreground',
+                        : 'text-foreground/65 hover:text-foreground',
                       link.disabled && 'pointer-events-none opacity-50'
                     )}
                   >
