@@ -25,12 +25,19 @@ export function Header({ className, children, ...props }: HeaderProps) {
   return (
     <header
       className={cn(
-        'sticky top-0 z-40 h-[var(--app-header-height,3rem)] w-full shrink-0 bg-transparent',
+        'sticky top-0 z-40 h-[var(--app-header-height,3rem)] w-full shrink-0',
+        'relative border-b border-border/50 bg-background/90 backdrop-blur-xl',
+        'dark:border-white/8 dark:shadow-[0_1px_0_rgba(255,255,255,0.04)]',
         className
       )}
       {...props}
     >
-      <div className='flex h-full items-center gap-1.5 px-2 sm:gap-2 sm:px-3'>
+      {/* Subtle gradient tint */}
+      <div
+        aria-hidden='true'
+        className='pointer-events-none absolute inset-0 bg-gradient-to-r from-primary/[0.04] via-transparent to-secondary/[0.04]'
+      />
+      <div className='relative flex h-full items-center gap-1.5 px-2 sm:gap-2 sm:px-3'>
         <SidebarTrigger variant='ghost' className='size-8' />
         {children}
       </div>

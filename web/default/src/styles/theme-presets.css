@@ -295,6 +295,10 @@ For commercial licensing, please contact support@quantumnous.com
 /* Also apply when no preset attribute is set (ck-tech is the default) */
 body:not([data-theme-preset]),
 [data-theme-preset='ck-tech'] {
+  --background: oklch(0.985 0.008 250);
+  --card: oklch(1 0 0);
+  --border: oklch(0.88 0.014 250);
+  --muted: oklch(0.945 0.012 250);
   --primary: oklch(0.52 0.22 245);
   --primary-foreground: oklch(1 0 0);
   --secondary: oklch(0.62 0.18 285);
@@ -305,15 +309,23 @@ body:not([data-theme-preset]),
   --chart-3: oklch(0.68 0.16 220);
   --chart-4: oklch(0.72 0.14 265);
   --chart-5: oklch(0.78 0.12 200);
+  --sidebar: oklch(0.965 0.012 250);
+  --sidebar-foreground: oklch(0.22 0.05 250);
+  --sidebar-border: oklch(0.90 0.016 250);
   --sidebar-primary: oklch(0.52 0.22 245);
   --sidebar-primary-foreground: oklch(1 0 0);
-  --sidebar-accent: oklch(0.62 0.18 285);
-  --sidebar-accent-foreground: oklch(1 0 0);
+  --sidebar-accent: oklch(0.935 0.018 250);
+  --sidebar-accent-foreground: oklch(0.22 0.05 250);
   --sidebar-ring: oklch(0.52 0.22 245);
   --radius: 0.5rem;
 }
 .dark body:not([data-theme-preset]),
 .dark [data-theme-preset='ck-tech'] {
+  --background: oklch(0.09 0.018 252);
+  --card: oklch(0.11 0.022 252);
+  --border: oklch(0.18 0.03 250);
+  --muted: oklch(0.13 0.025 252);
+  --muted-foreground: oklch(0.62 0.025 250);
   --primary: oklch(0.68 0.18 245);
   --primary-foreground: oklch(0.16 0.035 250);
   --secondary: oklch(0.72 0.16 285);
@@ -324,10 +336,13 @@ body:not([data-theme-preset]),
   --chart-3: oklch(0.76 0.14 220);
   --chart-4: oklch(0.64 0.17 265);
   --chart-5: oklch(0.8 0.12 200);
+  --sidebar: oklch(0.065 0.025 252);
+  --sidebar-foreground: oklch(0.88 0.018 240);
+  --sidebar-border: oklch(0.16 0.038 250);
   --sidebar-primary: oklch(0.68 0.18 245);
   --sidebar-primary-foreground: oklch(0.16 0.035 250);
-  --sidebar-accent: oklch(0.72 0.16 285);
-  --sidebar-accent-foreground: oklch(0.17 0.04 285);
+  --sidebar-accent: oklch(0.14 0.03 252);
+  --sidebar-accent-foreground: oklch(0.88 0.018 240);
   --sidebar-ring: oklch(0.68 0.18 245);
   --radius: 0.5rem;
 }
