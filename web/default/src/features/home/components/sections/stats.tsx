@@ -35,7 +35,7 @@ function Counter(props: CounterProps) {
   const formatValue = useCallback(
     (v: number) =>
       decimals > 0 ? v.toFixed(decimals) : Math.round(v).toLocaleString(),
-    [decimals]
+    [decimals],
   )
 
   const animate = useCallback(() => {
@@ -69,7 +69,7 @@ function Counter(props: CounterProps) {
           observer.unobserve(el)
         }
       },
-      { threshold: 0.5 }
+      { threshold: 0.5 },
     )
 
     observer.observe(el)
@@ -105,22 +105,22 @@ export function Stats(_props: StatsProps) {
   ]
 
   return (
-    <div className='border-border/40 bg-muted/10 relative z-10 border-y'>
+    <div className='relative z-10 border-y border-white/8'>
       <div className='mx-auto max-w-6xl px-6 py-10 md:py-12'>
-        <div className='grid grid-cols-2 gap-8 md:grid-cols-4 md:gap-12'>
-          {stats.map((s) => (
-            <div
-              key={s.label}
-              className='flex flex-col items-center text-center'
-            >
-              <span className='text-2xl font-bold tracking-tight md:text-3xl'>
-                <Counter end={s.end} suffix={s.suffix} decimals={s.decimals} />
-              </span>
-              <span className='text-muted-foreground mt-1.5 text-xs'>
-                {s.label}
-              </span>
-            </div>
-          ))}
+        <div className='overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] shadow-[0_0_48px_rgba(59,130,246,0.08)] backdrop-blur-sm'>
+          <div className='grid grid-cols-2 gap-px bg-white/8 md:grid-cols-4'>
+            {stats.map((s) => (
+              <div
+                key={s.label}
+                className='flex flex-col items-center bg-[oklch(0.06_0.02_250)] px-6 py-8 text-center md:py-10'
+              >
+                <span className='text-2xl font-bold tracking-tight text-cyan-300 md:text-3xl'>
+                  <Counter end={s.end} suffix={s.suffix} decimals={s.decimals} />
+                </span>
+                <span className='mt-1.5 text-xs text-slate-400'>{s.label}</span>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>

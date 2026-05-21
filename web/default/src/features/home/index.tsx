@@ -62,11 +62,38 @@ export function Home() {
 
   return (
     <PublicLayout showMainContainer={false}>
-      <Hero isAuthenticated={isAuthenticated} />
-      <Stats />
-      <Features />
-      <HowItWorks />
-      <CTA isAuthenticated={isAuthenticated} />
+      {/* Dark space wrapper — forces dark-mode variants on all child sections */}
+      <div
+        className='dark overflow-hidden'
+        style={{
+          backgroundColor: 'oklch(0.06 0.02 250)',
+          position: 'relative',
+          backgroundImage: [
+            'radial-gradient(circle at 12px 18px, rgba(255,255,255,0.30) 0 1px, transparent 1.4px)',
+            'radial-gradient(circle at 44px 62px, rgba(125,211,252,0.20) 0 1px, transparent 1.3px)',
+            'radial-gradient(circle at 86px 28px, rgba(196,181,253,0.16) 0 1px, transparent 1.2px)',
+          ].join(', '),
+          backgroundSize: '120px 120px, 160px 160px, 220px 220px',
+          backgroundPosition: '0 0, 24px 36px, 48px 12px',
+        }}
+      >
+        {/* Full-height aurora overlay */}
+        <div
+          aria-hidden='true'
+          className='pointer-events-none absolute inset-0 z-0'
+          style={{
+            background:
+              'linear-gradient(180deg, rgba(37,99,235,0.14) 0%, rgba(79,70,229,0.10) 24%, rgba(124,58,237,0.08) 48%, rgba(14,165,233,0.04) 68%, transparent 100%)',
+          }}
+        />
+        <div className='relative z-10'>
+          <Hero isAuthenticated={isAuthenticated} />
+          <Stats />
+          <Features />
+          <HowItWorks />
+          <CTA isAuthenticated={isAuthenticated} />
+        </div>
+      </div>
       <Footer />
     </PublicLayout>
   )
