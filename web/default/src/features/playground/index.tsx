@@ -74,8 +74,8 @@ function PlaygroundStarfield() {
           ctx.shadowColor = `rgba(96,165,250,${op * 0.7})`
           ctx.fillStyle = `rgba(210,230,255,${op})`
         } else {
-          ctx.shadowColor = `rgba(59,130,246,${op * 0.3})`
-          ctx.fillStyle = `rgba(60,100,180,${op * 0.28})`
+          ctx.shadowColor = `rgba(59,130,246,${op * 0.5})`
+          ctx.fillStyle = `rgba(50,90,200,${op * 0.55})`
         }
         ctx.fill()
       }
